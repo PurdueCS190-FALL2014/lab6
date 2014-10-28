@@ -82,7 +82,7 @@ public class Person {
     }
 
     public int getNumChildren() {
-        if (siblings != null)
+        if (children != null)
             return children.size();
         else
             return 0;

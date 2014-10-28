@@ -1,20 +1,31 @@
 public class TheJohnsons {
 
     public static void main(String[] args) {
-        Person p1 = new Person("Levi", 20, Person.MALE);
-        Person p2 = new Person("Lucas", 20, Person.MALE);
-        Person p3 = new Person("Kate", 24, Person.FEMALE);
-        Person p4 = new Person("Lucas", 24, Person.MALE);
+        Person levi = new Person("Levi", 20, Person.MALE);
+        Person lucasv = new Person("Lucas", 20, Person.MALE);
+        Person kate = new Person("Kate", 24, Person.FEMALE);
+        Person lucass = new Person("Lucas", 24, Person.MALE);
 
-        Group g = new Group();
-        g.add(p1);
-        g.add(p2);
-        g.add(p3);
-        g.add(p4);
+        Group levi_sibs = new Group();
+        levi_sibs.add(lucass);
+        levi.setSiblings(levi_sibs);
 
-        System.out.println(g);
-        for (Person p : g)
-            System.out.println(p);
+        Group lucasv_sibs = new Group();
+        lucasv_sibs.add(kate);
+        lucasv.setSiblings(lucasv_sibs);
+
+        Group kate_sibs = new Group();
+        kate_sibs.add(lucasv);
+        kate.setSiblings(kate_sibs);
+        kate.setSpouse(lucass);
+
+        Group lucass_sibs = new Group();
+        lucass_sibs.add(levi);
+        lucass.setSiblings(lucass_sibs);
+        lucass.setSpouse(kate);
+
+        FamilyExplorer f = new FamilyExplorer(levi);
+        f.explore();
     }
 
 }
