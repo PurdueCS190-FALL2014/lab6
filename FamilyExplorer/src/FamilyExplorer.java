@@ -13,16 +13,13 @@
         - Prints command help
 
     quit
-        - exits the FamilyExplorer
+        - Exits the FamilyExplorer
 
-    print [attribute]
-        - Prints the attribute specified
-        - If no attribute is specified, prints summary for the current Person
+    print
+        - Prints summary for the current Person
         
-    print [relationship] [identifier] [attribute]
-        - Prints the attribute specified of the person related by relationship
-          and identified by identifier
-        - If no attribute is specified, prints summary for the specified Person
+    print [relationship] [identifier]
+        - Prints summary for the specified Person
         - Identifier may be name or Group index
         - No identifier necessary for unambiguous relationships (eg spouse)
         - If no identifier provided for ambiguous relationship (eg siblings),
@@ -63,95 +60,149 @@ public class FamilyExplorer {
     }
 
     // INSTANCE METHODS
-    /** print current person */
+    /** Print current person */
     private void print() {
         System.out.println(current);
     }
+
+    /** Print specified person */
+    private void print(Person p) {
+        System.out.println(p);
+    }
+
+    /** Print specified group */
+    private void print(Group g) {
+        System.out.println(g);
+    }
     
     /** Switch to new current person */
-    private void goTo(String relationship, String identifier) {
-        switch (relationship) {
-            case "head":
-                current = head;
-                break;
-            case "mom":
-                if (current.getMom() != null) {
-                    current = current.getMom();
-                    print();
-                }
-                else
-                    System.out.printf("%s has no mom\n", current.getName());
-                break;
-            case "dad":
-                if (current.getDad() != null) {
-                    current = current.getDad();
-                    print();
-                }
-                else
-                    System.out.printf("%s has no dad\n", current.getName());
-                break;
-            case "spouse":
-                if (current.getSpouse() != null) {
-                    current = current.getSpouse();
-                    print();
-                }
-                else
-                    System.out.printf("%s has no spouse\n", current.getName());
-                break;
-            case "siblings":
-                try {
-                    int index = Integer.parseInt(identifier);
-                    if (current.getNumSiblings() > 0 && index >= 0 && index < current.getSiblings().size()) {
-                        current = current.getSiblings().get(index);
-                        print();
-                    }
-                    else
-                        System.out.println("Invalid sibling index");
-                }
-                catch (NumberFormatException e) {
-                    if (current.getNumSiblings() > 0 && current.getSiblings().get(identifier) != null) {
-                        current = current.getSiblings().get(identifier);
-                        print();
-                    }
-                    else
-                        System.out.println("Invalid sibling name");
-                }
-                break;
-            case "children":
-                break;
-            default:
-                System.out.println("Invalid relationship");
-                break;
-        }
+    private void goTo(Person p) {
+        current = p;
+        print();
     }
 
     /** Parse input */
     private void parseCommand(String line) {
+        // split arguments delimited by white space
         String[] args = line.split("\\s+");
+
+        // check the number of aguments
+        if (args.length <= 0 || args.length > 3) {
+            System.out.println("Invalid number of agruments");
+            return;
+        }
+
+        // get specified Person or Group
+        Person person = null;
+        Group group = null;
+
+        if (args.length >= 2) {
+            switch(args[1]) {
+                case "head":
+                    person = head;
+                    break;
+                case "mom":
+                    person = current.getMom();
+                    break;
+                case "dad":
+                    person = current.getDad();
+                    break;
+                case "spouse":
+                    person = current.getSpouse();
+                    break;
+                case "siblings":
+                    group = current.getSiblings();
+                    break;
+                case "children":
+                    group = current.getChildren();
+                    break;
+                default:
+                    System.out.println("Invalid relationship");
+                    return;
+            }
+        }
+        if (args.length == 3) {
+            try {
+                int index = Integer.parseInt(args[2]);
+                if (group != null && index >= 0 && index < group.size())
+                    person = group.get(index);
+                else {
+                    System.out.println("Invalid index");
+                    return;
+                }
+            }
+            catch (NumberFormatException e) {
+                if (group != null && group.get(args[2]) != null)
+                    person = group.get(args[2]);
+                else {
+                    System.out.println("Invalid name");
+                    return;
+                }
+            }
+        }
+
+        // parse command
         switch(args[0]) {
             case "print":
-                if (args.length == 1)
+                if (person != null)
+                    print(person);
+                else if (person == null && group != null)
+                    print(group);
+                else if (person == null && group == null && args.length == 1)
                     print();
+                else
+                    System.out.println("Object does not exist");
                 break;
             case "goto":
-                if (args.length == 3)
-                    goTo(args[1], args[2]);
-                else if (args.length == 2)
-                    goTo(args[1], "");
+                if (person != null)
+                    goTo(person);
                 else
                     System.out.println("Invalid 'goto' command");
                 break;
             case "help":
-                System.out.print("help\n\t- Prints command help\n\nquit\n\t- exits the FamilyExplorer\n\nprint [attribute]\n\t- Prints the attribute specified\n\t- If no attribute is specified, prints summary for the current Person\n\nprint [relationship] [identifier] [attribute]\n\t- Prints the attribute specified of the person related by relationship\n\t  and identified by identifier\n\t- If no attribute is specified, prints summary for the specified Person\n\t- Identifier may be name or Group index\n\t- No identifier necessary for unambiguous relationships (eg spouse)\n\t- If no identifier provided for ambiguous relationship (eg siblings),\n\t  the entier Group will be printed\n\t- No relatiohsip will throw an error\n\t- Valid relationships:\n\t\t+ head\n\t\t+ mom\n\t\t+ dad\n\t\t+ spouse\n\t\t+ siblings\n\t\t+ children\n\ngoto [relationship] [identifier]\n\t- Behaves much like the 'print' command however changes the current Person\n\t  to the identified Person\n\t- Identifier may be name or Group index\n\t- No identifier necessary for unambiguous relationships (eg spouse)\n\t- No identifier for ambiguous relationship (eg siblings) will throw\n\t  an error\n\t- No relatiohsip will throw an error\n");
+                printHelp();
                 break;
             case "quit":
                 running = false;
                 break;
             default:
-                System.out.println("Unrecognized command");
                 break;
         }
                 
+    }
+
+    /** Print help function */
+    private void printHelp() {
+        System.out.printf("|---------------------------------------------------------------------------------|\n");
+        System.out.printf("help\n");
+        System.out.printf("\t- Prints command help\n\n");
+        System.out.printf("quit\n");
+        System.out.printf("\t- Exits the FamilyExplorer\n\n");
+        System.out.printf("print\n");
+        System.out.printf("\t- Prints summary for the current Person\n\n");
+        System.out.printf("print [relationship] [identifier]\n");
+        System.out.printf("\t- Prints summary for the specified Person\n");
+        System.out.printf("\t- Identifier may be name or Group index\n");
+        System.out.printf("\t- No identifier necessary for unambiguous relationships (eg spouse)\n");
+        System.out.printf("\t- If no identifier provided for ambiguous relationship (eg siblings),\n");
+        System.out.printf("\t  the entier Group will be printed\n");
+        System.out.printf("\t- No relatiohsip will throw an error\n");
+        System.out.printf("\t- Valid relationships:\n");
+        System.out.printf("\t\t+ head\n");
+        System.out.printf("\t\t+ mom\n");
+        System.out.printf("\t\t+ dad\n");
+        System.out.printf("\t\t+ spouse\n");
+        System.out.printf("\t\t+ siblings\n");
+        System.out.printf("\t\t+ children\n\n");
+        System.out.printf("goto [relationship] [identifier]\n");
+        System.out.printf("\t- Behaves much like the 'print' command however changes the current Person\n");
+        System.out.printf("\t  to the identified Person\n");
+        System.out.printf("\t- Identifier may be name or Group index\n");
+        System.out.printf("\t- No identifier necessary for unambiguous relationships (eg spouse)\n");
+        System.out.printf("\t- No identifier for ambiguous relationship (eg siblings) will throw\n");
+        System.out.printf("\t  an error\n");
+        System.out.printf("\t- No relatiohsip will throw an error\n");
+        System.out.printf("|---------------------------------------------------------------------------------|\n");
     }
 
     /** Loop and take commands */
