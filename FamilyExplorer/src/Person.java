@@ -131,10 +131,14 @@ public class Person {
     public String toString() {
         StringBuilder output = new StringBuilder();
         Formatter f = new Formatter(output);
-        f.format("Name: %s, ", getName());
-        f.format("Age: %d, ", getAge());
+        f.format("|-PERSON-PROFILE--------------------------------|\n");
+        f.format("| Name: %39s |\n", getName());
+        f.format("| Age: %40d |\n", getAge());
         String gender = getGender() == Person.MALE ? "MALE" : "FEMALE";
-        f.format("Gender: %s ", gender);
+        f.format("| Gender: %37s |\n", gender);
+        f.format("| Number of Siblings: %25d |\n", getNumSiblings());
+        f.format("| Number of Children: %25d |\n", getNumChildren());
+        f.format("|-----------------------------------------------|");
 
         return output.toString();
     }

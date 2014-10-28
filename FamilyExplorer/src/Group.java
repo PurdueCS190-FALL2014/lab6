@@ -74,9 +74,14 @@ public class Group implements Iterable<Person> {
         StringBuilder output = new StringBuilder();
         Formatter f = new Formatter(output);
 
+        f.format("|-GROUP-----------------------------------------|\n");
+        f.format("|-ID---------------------------------------NAME-|\n");
+
         for (Person p : group) {
-            f.format("%d: %s, ", group.indexOf(p), p.getName());
+            f.format("| %2d %42s |\n", group.indexOf(p), p.getName());
         }
+
+        f.format("|-----------------------------------------------|");
 
         return output.toString();
     }
