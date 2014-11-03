@@ -32,7 +32,6 @@
             + spouse
             + siblings
             + children
-            + cousins
 
     goto [relationship] [identifier]
         - Behaves much like the 'print' command however changes the current Person
@@ -61,36 +60,6 @@ public class FamilyExplorer {
     }
 
     // INSTANCE METHODS
-    /** Get cousins */
-    private Group getCousins() {
-        Group cousins = new Group();
-        Person dad = current.getDad();
-        if (dad != null) {
-            Group sibs = dad.getSiblings();
-            for (Person sib : sibs) {
-                if (!sib.equals(dad)) {
-                    Group children = sib.getChildren();
-                    for (Person child : children) {
-                        cousins.add(child);
-                    }
-                }
-            }
-        }
-        Person mom = current.getMom();
-        if (dad != null) {
-            Group sibs = mom.getSiblings();
-            for (Person sib : sibs) {
-                if (!sib.equals(mom)) {
-                    Group children = sib.getChildren();
-                    for (Person child : children) {
-                        cousins.add(child);
-                    }
-                }
-            }
-        }
-        return cousins;
-    }
-
     /** Print current person */
     private void print() {
         System.out.println(current);
@@ -146,9 +115,6 @@ public class FamilyExplorer {
                     break;
                 case "children":
                     group = current.getChildren();
-                    break;
-                case "cousins":
-                    group = getCousins();
                     break;
                 default:
                     System.out.println("Invalid relationship");
@@ -228,7 +194,6 @@ public class FamilyExplorer {
         System.out.printf("\t\t+ spouse\n");
         System.out.printf("\t\t+ siblings\n");
         System.out.printf("\t\t+ children\n");
-        System.out.printf("\t\t+ cousins\n\n");
         System.out.printf("goto [relationship] [identifier]\n");
         System.out.printf("\t- Behaves much like the 'print' command however changes the current Person\n");
         System.out.printf("\t  to the identified Person\n");
