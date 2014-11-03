@@ -244,9 +244,12 @@ public class FamilyExplorer {
     public void explore() {
         Scanner sc = new Scanner(System.in);
         running = true;
-        while (running && sc.hasNextLine()) {
-            System.out.println("Type a command:");
-            parseCommand(sc.nextLine());
+        while (running) {
+            System.out.print(">>> ");
+            System.out.flush();
+            if (sc.hasNextLine()) 
+                parseCommand(sc.nextLine());
+            else running = false;
         }
     }
 
