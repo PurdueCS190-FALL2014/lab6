@@ -12,7 +12,9 @@ how to use git and it's features.
 
 ## The magic command
 
-```cd; curl -sL https://raw.githubusercontent.com/PurdueCS190/lab6/master/materials/setup.sh | /bin/bash```
+```bash
+cd; curl -sL https://raw.githubusercontent.com/PurdueCS190/lab6/master/materials/setup.sh | /bin/bash
+```
 
 ## Step 0: The project
 
