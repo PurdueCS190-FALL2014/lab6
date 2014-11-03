@@ -35,6 +35,7 @@ print out specific individuals in the family, groups of individuals, or switch c
 You can see a picture of the family tree [here] (https://raw.githubusercontent.com/PurdueCS190/lab6/master/materials/tree.png)
 
 We've provided you with the code already. Let's run it and see what it does. 
+
 1. Navigate to the __~/cs190lab6/FamilyExplorer/__ directory
 2. Run the command `$ bash compile.sh`.
 3. Now run `$ bash run.sh`.
