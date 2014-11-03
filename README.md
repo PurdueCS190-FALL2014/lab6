@@ -32,7 +32,8 @@ git config --global user.email "your_email@purdue.edu"
 Your given a project in CS 180 in which you have to create a Java program for traversing a family tree. Your
 program should be able to take a family in a given format and interact with the tree. You should be able to
 print out specific individuals in the family, groups of individuals, or switch context to a new individual.
-You can see a picture of the family tree [here] (https://raw.githubusercontent.com/PurdueCS190/lab6/master/materials/tree.png)
+You can see a picture of the family tree below
+> ![] (https://raw.githubusercontent.com/PurdueCS190/lab6/master/materials/tree.png)
 
 We've provided you with the code already. Let's run it and see what it does. 
 
