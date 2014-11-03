@@ -245,6 +245,7 @@ public class FamilyExplorer {
         Scanner sc = new Scanner(System.in);
         running = true;
         while (running && sc.hasNextLine()) {
+            System.out.println("Type a command:");
             parseCommand(sc.nextLine());
         }
     }
