@@ -56,6 +56,9 @@ Initialized empty Git repository in /u/data/u95/<your_username>/cs190lab6/Family
 
 * Now enter `$ git status`.
 
+
+
+```
     On branch master
 
     Initial commit
@@ -69,6 +72,7 @@ Initialized empty Git repository in /u/data/u95/<your_username>/cs190lab6/Family
             src/
 
     nothing added to commit but untracked files present (use "git add" to track)
+```
 
 We have a new repository and we can see that git recognizes that there are new files. Before we make an initial commit, let's
 add a `.gitignore` file. Recall that we don't want to commit `.class` files to a git repository. 
@@ -199,6 +203,7 @@ If you are getting errors, ask a TA right away.
 
 * Add the changes to `FamilyExplorer.java`
 * Commit your changes. 
+
 You're getting fluent at these git commands
 already!
 
@@ -233,7 +238,7 @@ We want to revert the commit that changed the output.
 "Revert '*some message*' This commit reverts *some commit hash*".
 * Run the compile script and run the program again. It should be back to the old style of output.
 
-Give your neighbor a high five, you just did some serious source control.
+__Give your neighbor a high five, you just did some serious source control.__
 
 ## Grading
 
