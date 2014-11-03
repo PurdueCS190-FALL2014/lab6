@@ -24,8 +24,8 @@ Before you start working you have to do some setup of git. You need to set up yo
 your name and email. These will be tied to each commit so that it is known who committed the code.
 
 ```bash
-git config --global user.name "Your Name" 
-git config --global user.email "your_email@purdue.edu"
+git config --global user.name $USER
+git config --global user.email $USER@purdue.edu
 ```
 ## Step 0: The project
 
