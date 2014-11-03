@@ -8,7 +8,7 @@ mkdir ~/cs190lab6/
 cd ~/cs190lab6/
 
 # get tarball
-wget https://raw.githubusercontent.com/PurdueCS190/lab6/student_start/materials/lab6.tgz
+wget https://raw.githubusercontent.com/PurdueCS190/lab6/student_start_package/materials/lab6.tgz
 
 # untar
 tar -zxvf lab6.tgz
