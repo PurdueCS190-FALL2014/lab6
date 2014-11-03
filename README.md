@@ -57,7 +57,7 @@ Score! We have a new repository and we can see that git recognizes that there ar
 Remember from lecture the staging area? Right now these files are **untracked** by git. This means that if we run `$ git commit`
 now, no new changes will be commited. First we have to add these changes. Before we do, recall that we don't want to
 commit `.class` files to a git repository, but the __build/__ folder is full of them! Before we add the files let's
-add a `.gitignore` file. Run `$ echo *.class >> .gitignore`. This adds a line in the `.gitignore` file to ignore files
+add a `.gitignore` file. Run `$ echo "*.class" >> .gitignore`. This adds a line in the `.gitignore` file to ignore files
 ending in `.class`.
 
 Now run `$ git status` again.
@@ -133,7 +133,7 @@ Run `$ git log` and you should now see both of your commits. You're well on your
 Now your CS 180 lab TA tells you that you need to add in support for printing and navigating to cousins. This is
 a serious new feature that could break things! I'm glad we already have our code saved in a working state!
 
-Add the following method to `Person.java`:
+Add the following method to `FamilyExplorer.java`:
 
     /** Get cousins */
     private Group getCousins() {
@@ -165,7 +165,7 @@ Add the following method to `Person.java`:
         return cousins;
     }
 
-Also add this case to the switch statement in `Person.java` right above **default**:
+Also add this case to the switch statement in `FamilyExplorer.java` right above **default**:
 
     case "cousins":
         group = getCousins();
@@ -174,10 +174,48 @@ Also add this case to the switch statement in `Person.java` right above **defaul
 Recompile and try it out! Now you should be able to enter `print cousins`. Again, don't get stuck on this part.
 If you are getting errors, ask a TA right away.
 
-Great job so far! Add the changes to `Person.java` and commit them. You're getting fluent at these git commands
+Great job so far! Add the changes to `FamilyExplorer.java` and commit them. You're getting fluent at these git commands
 already!
 
 __Pro tip: You can never overuse the **log** and **status** commands. You should be looking at these between
 almost every command__
 
 ## Step 4: A step backwards
+
+Now that your this far you decide that you want the output to be printed the way you had it before. Now we're really
+in a pickle because that was a commit ago. First let's look at our commit log. Run `$ git log`. Your output should
+look something like this:
+
+    commit a6bd3cc3ece612ee4ff1a343acfb36b90fcd5d32
+    Author: Levi Starrett <levi@roxsoftware.com>
+    Date:   Sun Nov 2 23:51:05 2014 -0500
+
+        Added support for cousins
+
+    commit bfe63e9095f46ce522ac0033951090203a07fc31
+    Author: Levi Starrett <levi@roxsoftware.com>
+    Date:   Sun Nov 2 23:46:22 2014 -0500
+
+        Changed output to shorter format
+
+    commit 179762b4273282d798b0df0dfc745620a79fffde
+    Author: Levi Starrett <levi@roxsoftware.com>
+    Date:   Sun Nov 2 18:57:48 2014 -0500
+
+        Initial commit
+
+We want to revert the commit that changed the output. Run `$ git revert <commit_hash>`. This will open up an editor
+with a commit that says something like "Revert '<some message>' This commit reverts <some commit hash>". Try running
+the compile script and running the program again. It should be back to the old style of output. Give your neighbor
+a high five, you just did some serious source control.
+
+## Grading
+
+Show your TA your git log.
+
+## Step 5: Extras!
+
+Here are some practical things you could do with git if you have extra time:
+* Work on your .gitconfig file. Some useful information here: http://git-scm.com/docs/git-config
+* Put your CS 180 project into a git repository! You can pretty much follow this lab to do so.
+* Ask your TA a question about something you don't understand.
