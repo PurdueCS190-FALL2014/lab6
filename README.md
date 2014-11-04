@@ -123,6 +123,8 @@ Congratulations, you've successfully committed your files! Run `$ git log` to vi
 
 *Bonus*: Why might it be good to do this step in two commits instead of one?
 
+__DON'T MOVE ON TO STEP 2 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
+
 ## Step 2: Make a change
 
 Now that we've gotten our files committed, we'd like to make a change. Say we want the print output to be a little shorter
@@ -169,6 +171,8 @@ Let's check the status of our git repo.
 under __Changes not staged for commit:__ Now we need to add them to the staging area and commit
 * Run `$ git add src/Group.java src/Person.java`. Now commit the files with a nice descriptive commit message.
 * Run `$ git log` and you should now see both of your commits. You're well on your way to becoming a git pro!
+
+__DON'T MOVE ON TO STEP 2 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
 
 ## Step 3: Make another change
 
@@ -229,6 +233,8 @@ already!
 
 __Pro tip: You can never overuse the *log* and *status* commands. You should be looking at these between
 almost every command__
+
+__DON'T MOVE ON TO STEP 2 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
 
 ## Step 4: A step backwards
 
