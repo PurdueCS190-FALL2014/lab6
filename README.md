@@ -27,6 +27,9 @@ your name and email. These will be tied to each commit so that it is known who c
 git config --global user.name $USER
 git config --global user.email $USER@purdue.edu
 ```
+
+__For quick reference on git commands, see the cheat sheet [here] (https://github.com/PurdueCS190/lab6/master/cheat_sheet.md)__
+
 ## Step 0: The project
 
 Your given a project in CS 180 in which you have to create a Java program for traversing a family tree. Your
