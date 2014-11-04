@@ -59,18 +59,18 @@ This is a reference guide for the git commands that we've gone over in lecture a
 
 7. Check status of repository
 
-```bash
-git status
-```
+  ```bash
+  git status
+  ```
 
 8. Check log of recent commits
 
-```bash
-git log
+  ```bash
+  git log
 
-# OR, for a simpler view
-git log pretty=oneline
-```
+  # OR, for a simpler view
+  git log pretty=oneline
+  ```
 
 9. To remove a file from the staging area
 
@@ -78,9 +78,9 @@ git log pretty=oneline
 
 > You will only ever need to do this if you accidentally `add` a file
 
-```bash
-git rm --cached <filename>
-```
+  ```bash
+  git rm --cached <filename>
+  ```
 
 ### Troubleshooting
 

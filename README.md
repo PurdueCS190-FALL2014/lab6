@@ -28,7 +28,7 @@ git config --global user.name $USER
 git config --global user.email $USER@purdue.edu
 ```
 
-__For quick reference on git commands, see the cheat sheet [here] (https://github.com/PurdueCS190/lab6/master/cheat_sheet.md)__
+__For quick reference on git commands, see the cheat sheet [here] (https://github.com/PurdueCS190/lab6/blob/master/cheat_sheet.md)__
 
 ## Step 0: The project
 
