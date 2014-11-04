@@ -172,7 +172,7 @@ under __Changes not staged for commit:__ Now we need to add them to the staging 
 * Run `$ git add src/Group.java src/Person.java`. Now commit the files with a nice descriptive commit message.
 * Run `$ git log` and you should now see both of your commits. You're well on your way to becoming a git pro!
 
-__DON'T MOVE ON TO STEP 2 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
+__DON'T MOVE ON TO STEP 3 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
 
 ## Step 3: Make another change
 
@@ -234,7 +234,7 @@ already!
 __Pro tip: You can never overuse the *log* and *status* commands. You should be looking at these between
 almost every command__
 
-__DON'T MOVE ON TO STEP 2 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
+__DON'T MOVE ON TO STEP 4 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check your git log).
 
 ## Step 4: A step backwards
 
