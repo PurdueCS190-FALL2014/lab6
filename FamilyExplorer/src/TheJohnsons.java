@@ -1,3 +1,11 @@
+/** Copyright 2014 -- Levi Starrett
+    For educational purposes only
+
+    TheJohnsons creates a particular family tree and family
+    explorer to explore it.
+
+    */
+
 public class TheJohnsons {
 
     public static void main(String[] args) {
