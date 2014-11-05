@@ -271,9 +271,12 @@ We want to revert the commit that changed the output.
 **Important Note!**
 
 If it opens in vim, then follow these steps to save the file and return to the nice familiar terminal.
+
 1. Don't panic
 2. type `:wq`
-> For the curious: the colon allows you to type commands, w is for write, and q is for quit.
+
+    > For the curious: the colon allows you to type commands, w is for write, and q is for quit.
+
 3. You have now committed!
 
 
