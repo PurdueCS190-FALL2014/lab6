@@ -183,35 +183,40 @@ you've already made.
 Add the following method to `FamilyExplorer.java` after line 63:
 
 ```java
-         /** Get cousins */
-         private Group getCousins() {
-             Group cousins = new Group();
-             Person dad = current.getDad();
-             if (dad != null) {
-                 Group sibs = dad.getSiblings();
-                 for (Person sib : sibs) {
-                     if (!sib.equals(dad)) {
-                         Group children = sib.getChildren();
-                         for (Person child : children) {
-                             cousins.add(child);
-                         }
-                     }
-                 }
-             }
-             Person mom = current.getMom();
-             if (mom != null) {
-                 Group sibs = mom.getSiblings();
-                 for (Person sib : sibs) {
-                     if (!sib.equals(mom)) {
-                         Group children = sib.getChildren();
-                         for (Person child : children) {
-                             cousins.add(child);
-                         }
-                     }
-                 }
-             }
-             return cousins;
-         }
+        /** Get cousins */
+        private Group getCousins() {
+            if (current == null) return null;
+            Group cousins = new Group();
+            Person dad = current.getDad();
+            if (dad != null) {
+                Group sibs = dad.getSiblings();
+                if (sibs != null) {
+                    for (Person sib : sibs) {
+                        if (sib != null && !sib.equals(dad)) {
+                            Group children = sib.getChildren();
+                            for (Person child : children) {
+                                cousins.add(child);
+                            }
+                        }
+                    }
+                }
+            }
+            Person mom = current.getMom();
+            if (mom != null) {
+                Group sibs = mom.getSiblings();
+                if (sibs != null) {
+                    for (Person sib : sibs) {
+                        if (sib != null && !sib.equals(mom)) {
+                            Group children = sib.getChildren();
+                            for (Person child : children) {
+                                cousins.add(child);
+                            }
+                        }
+                    }
+                }
+            }
+            return cousins;
+        }
 ```
 
 Also add this case to the switch statement in `FamilyExplorer.java` on line 149 right above `default`:
