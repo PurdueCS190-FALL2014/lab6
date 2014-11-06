@@ -243,7 +243,7 @@ __DON'T MOVE ON TO STEP 4 UNTIL YOU MAKE SURE YOU COMMIT YOUR CHANGES__ (check y
 
 ## Step 4: A step backwards
 
-Now that your this far you decide that you want the output to be printed the way you had it before. First
+Now that you're this far you decide that you want the output to be printed the way you had it before. First
 let's look at our commit log. Run `$ git log`. Your output should look something like this:
 
     commit a6bd3cc3ece612ee4ff1a343acfb36b90fcd5d32
