@@ -86,8 +86,8 @@ Initialized empty Git repository in /u/data/u95/<your_username>/cs190lab6/Family
 
 We have a new repository and we can see that git recognizes that there are new files. Before we make an initial commit, let's
 add a `.gitignore` file. Recall that we don't want to commit `.class` files to a git repository.
-* Run `$ echo "*.class\n*~" >> .gitignore`. This adds a line in the `.gitignore` file to ignore files
-ending in `.class` and DrJava buffer files (you will learn what these are when we talk about editors).
+* Run `$ echo -e "*.class\n*~\nbuild" >> .gitignore`. This adds a line in the `.gitignore` file to ignore files
+ending in `.class`, build, and DrJava buffer files (you will learn what these are when we talk about editors).
 
 Now run `$ git status` again.
 
